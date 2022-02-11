@@ -9,8 +9,8 @@ def main(file_name):
     
     # open the players data file
     with open(file_name, 'r') as players_df:
-        # reading lottery org nums 
-        lottery_nums = input("").strip().split(" ")
+        # reading lottery org nums
+        lottery_nums = input("").strip().split(" ") # index wise matching case
 
         # defining the winner's table
         winners = [0 for i in range(6)]
@@ -23,7 +23,8 @@ def main(file_name):
                 player_nums = line.strip().split(" ")
                 
                 # number of matches in the lottery_nums
-                matches = sum([1 for i in range(len(player_nums)) if player_nums[i] == lottery_nums[i]])                   
+                # matches = sum([1 for i in range(len(player_nums)) if player_nums[i] == lottery_nums[i]]) # inex wise matching case
+                matches = sum([1 for i in player_nums if i in lottery_nums])
                 winners[matches] += 1
 
             # print the winners
