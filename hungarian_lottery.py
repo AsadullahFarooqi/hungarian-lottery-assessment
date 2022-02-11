@@ -23,8 +23,9 @@ def main(file_name):
                 player_nums = line.strip().split(" ")
                 
                 # number of matches in the lottery_nums
-                # matches = sum([1 for i in range(len(player_nums)) if player_nums[i] == lottery_nums[i]]) # inex wise matching case
-                matches = sum([1 for i in player_nums if i in lottery_nums])
+                matches = sum([1 for i in range(len(player_nums)) if player_nums[i] == lottery_nums[i]]) # index wise matching case
+                matches = min(sum([1 for i in player_nums if i in lottery_nums]),
+                                  sum([1 for j in lottery_nums if j in player_nums])) # without index matching case
                 winners[matches] += 1
 
             # print the winners
